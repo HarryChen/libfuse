@@ -112,7 +112,7 @@ static int add_mount(const char *progname, const char *fsname,
 			goto out_restore;
 		}
 
-		execle("/bin/mount", "/bin/mount", "--no-canonicalize", "-i",
+		execle("/bin/mount", "/bin/mount", "-i",
 		       "-f", "-t", type, "-o", opts, fsname, mnt, NULL, &env);
 		fprintf(stderr, "%s: failed to execute /bin/mount: %s\n",
 			progname, strerror(errno));
@@ -243,7 +243,7 @@ static int remove_mount(const char *progname, const char *mnt)
 			goto out_restore;
 		}
 
-		execle("/bin/umount", "/bin/umount", "--no-canonicalize", "-i",
+		execle("/bin/umount", "/bin/umount", "-i",
 		       "--fake", mnt, NULL, &env);
 		fprintf(stderr, "%s: failed to execute /bin/umount: %s\n",
 			progname, strerror(errno));
